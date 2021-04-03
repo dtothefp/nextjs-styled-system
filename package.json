@@ -5,13 +5,14 @@
   "workspaces": [
     "packages/*"
   ],
+  "prettier": "@affirm/eslint-config/.prettierrc.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .tsx --ext .js --ext .ts .",
     "test": "jest",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.base.json"
   },
   "dependencies": {
     "@types/react": "^17.0.3",
