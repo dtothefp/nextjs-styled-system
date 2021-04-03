@@ -1,0 +1,108 @@
+name: Pull Request
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Semver version (patch|minor|major)
+        required: true
+        default: patch
+  push:
+    branches: [master]
+  pull_request:
+    branches: '*'
+env:
+  NODE_VERSION: 14
+jobs:
+  install:
+    name: Install Node Dependencies
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, 'ci skip')}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Restore Cache
+        uses: actions/cache@master
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        run: yarn
+  lint:
+    name: Lint
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Restore Cache
+        id: cache-node-modules
+        uses: actions/cache@master
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn
+      - name: Lint
+        run: yarn lint
+  test:
+    name: Test
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Restore Cache
+        id: cache-node-modules
+        uses: actions/cache@master
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn
+      - name: Test
+        run: yarn test
+  typecheck:
+    name: Typecheck
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Restore Cache
+        id: cache-node-modules
+        uses: actions/cache@master
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn
+      - name: Typecheck
+        run: yarn typecheck
