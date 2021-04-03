@@ -1,6 +1,6 @@
-import { AppProps } from "next/app";
-import { Normalize } from "styled-normalize";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { AppProps } from 'next/app';
+import { Normalize } from 'styled-normalize';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: "#0070f3",
+    primary: '#0070f3',
   },
 };
 

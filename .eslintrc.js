@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ["@affirm/eslint-config"],
+  extends: ['@affirm/eslint-config'],
 };
