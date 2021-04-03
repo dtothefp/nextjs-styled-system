@@ -1,7 +1,7 @@
 {
   "name": "@affirm/eslint-config",
   "version": "0.0.1",
-  "description": "Shared eslint-config for Affirm",
+  "description": "Shared eslint configuration for Affirm",
   "license": "MIT",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.20.0",
