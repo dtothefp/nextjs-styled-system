@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import { Normalize } from 'styled-normalize';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { theme } from '@affirm/components';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -9,12 +10,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-};
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
