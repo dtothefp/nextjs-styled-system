@@ -1,5 +1,4 @@
 export * from './Box';
-export * from './Card';
 export * from './Flex';
 export * from './Input';
 export * from './Label';

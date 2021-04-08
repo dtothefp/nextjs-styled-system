@@ -2,7 +2,7 @@ import React, { FC, forwardRef } from 'react';
 import { BoxProps } from '../Box';
 import { Flex } from '../Flex';
 
-export const Label: FC<BoxProps> = forwardRef((props, ref) =>
+export const Label: FC<BoxProps> = forwardRef((props, ref) => (
   <Flex
     ref={ref}
     as="label"
@@ -11,4 +11,4 @@ export const Label: FC<BoxProps> = forwardRef((props, ref) =>
       width: '100%',
     }}
   />
-)
+));

@@ -14,16 +14,8 @@ function Home(): JSX.Element {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box
-        textAlign="center"
-        variant="card"
-        maxWidth="538px"
-        mx="auto"
-        my={6}
-      >
-        <h1>
-          Enter your credit card information
-        </h1>
+      <Box textAlign="center" variant="card" maxWidth="538px" mx="auto" my={6}>
+        <h1>Enter your credit card information</h1>
         <Box as="form">
           <Label>{NAME}</Label>
           <Input placeholder={NAME} />
@@ -32,18 +24,16 @@ function Home(): JSX.Element {
           <Label>{CVV}</Label>
           <Input placeholder={CVV} />
           <Flex>
-            <Box width={1/2} mr={[0, 1]}>
+            <Box width={1 / 2} mr={[0, 1]}>
               <Label>{EXP_MONTH}</Label>
               <Input placeholder={EXP_MONTH} />
             </Box>
-            <Box width={1/2} ml={[0, 1]}>
+            <Box width={1 / 2} ml={[0, 1]}>
               <Label>{EXP_YEAR}</Label>
-              <Input placeholder={EXP_YEAR}/>
+              <Input placeholder={EXP_YEAR} />
             </Box>
           </Flex>
-          <Box as="button">
-            Submit
-          </Box>
+          <Box as="button">Submit</Box>
         </Box>
       </Box>
     </div>

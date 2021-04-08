@@ -19,9 +19,7 @@ export default {
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
-  fontSizes: [
-    12, 14, 16, 20, 24, 32, 48, 64, 96
-  ],
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     body: 400,
     heading: 700,
@@ -52,7 +50,7 @@ export default {
       fontFamily: 'heading',
       fontWeight: 'heading',
       lineHeight: 'heading',
-      fontSize: [ 5, 6, 7 ],
+      fontSize: [5, 6, 7],
     },
     caps: {
       textTransform: 'uppercase',
@@ -82,7 +80,7 @@ export default {
       textDecoration: 'none',
       ':hover,:focus,.active': {
         color: 'primary',
-      }
+      },
     },
   },
   buttons: {
@@ -112,4 +110,4 @@ export default {
       lineHeight: 'body',
     },
   },
-}
+};

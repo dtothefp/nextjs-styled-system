@@ -9,19 +9,19 @@ import {
   BackgroundProps,
 } from 'styled-system';
 
-export interface BaseBoxProps extends
-  SpaceProps,
-  ColorProps,
-  TypographyProps,
-  LayoutProps,
-  FlexboxProps,
-  PositionProps,
-  BackgroundProps,
-  BaseComponentProps,
-  ClickableProps {
+export interface BaseBoxProps
+  extends SpaceProps,
+    ColorProps,
+    TypographyProps,
+    LayoutProps,
+    FlexboxProps,
+    PositionProps,
+    BackgroundProps,
+    BaseComponentProps,
+    ClickableProps {
   color?: string;
 }
 
 export interface BoxProps extends BaseBoxProps {
-  ref?: Ref<any>;
+  ref?: Ref<unknown>;
 }
