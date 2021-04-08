@@ -1,4 +1,5 @@
 import React, { FC, forwardRef } from 'react';
+import { css } from 'styled-components';
 import { Box, BoxProps } from '../Box';
 
 export const Input: FC<BoxProps> = forwardRef((props, ref) => (
@@ -20,6 +21,9 @@ export const Input: FC<BoxProps> = forwardRef((props, ref) => (
       color: 'inherit',
       bg: 'transparent',
       boxSizing: 'border-box',
+      "::placeholder": {
+        color: 'transparent',
+      },
     }}
   />
 ));
