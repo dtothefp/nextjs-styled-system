@@ -1,7 +1,7 @@
 {
-  "name": "@affirm/jest-config",
+  "name": "@dfp/jest-config",
   "version": "0.0.1",
-  "description": "Shared Jest configuration for Affirm",
+  "description": "Shared Jest configuration",
   "license": "MIT",
   "dependencies": {
     "@testing-library/react": "^11.2.6",
