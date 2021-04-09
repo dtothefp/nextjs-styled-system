@@ -58,12 +58,10 @@ export const Input: FC<InputProps> = forwardRef((props, ref) => {
         top="9px"
         left="12px"
         color="secondary"
-        zIndex={0}
-        display={focused ? 'none' : 'block'}>
+        display={focused || !!value ? 'none' : 'block'}>
         {props.placeholder}
       </Label>
       <Box
-        zIndex={100}
         ref={ref}
         as="input"
         type="text"

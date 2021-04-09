@@ -1,5 +1,6 @@
 import React, { FC, forwardRef } from 'react';
 import { Box } from '../Box';
+import { ButtonProps } from './types';
 
 export const Button: FC<ButtonProps> = forwardRef((props, ref) => (
   <Box

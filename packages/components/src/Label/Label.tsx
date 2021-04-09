@@ -9,6 +9,9 @@ export const Label: FC<BoxProps> = forwardRef((props, ref) => (
     __css={{
       transition: '0.2s',
       cursor: 'default',
+      'pointer-events': 'none',
+      background: 'none !important',
+      zIndex: 'auto',
       'user-select': 'none',
     }}
   />

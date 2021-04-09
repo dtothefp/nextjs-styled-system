@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import React, { FC } from 'react';
 import * as yup from 'yup';
-import { Box, Flex, Input, Form } from '@dfp/components';
+import { Box, Flex, Input, Form, FormProps } from '@dfp/components';
 import { NAME, CARD, CVV, EXP_MONTH, EXP_YEAR } from './constants';
 import { cardNumber, cvv, name, expYear, expMonth } from './validations';
 import { Amex, Discover, Mastercard, Visa } from '../../assets';
 
-const validations = {
+const validations: FormProps['validations'] = {
   initialValues: {
     name: '',
     cvv: '',
@@ -13,8 +14,13 @@ const validations = {
     expMonth: '',
     expYear: '',
   },
-  onSubmit: (values) => {
-    console.log(JSON.stringify(values, null, 2));
+  onSubmit: async (values) => {
+    console.log('*Form Input Values*', JSON.stringify(values, null, 2));
+
+    // TODO: sanitize form values, might be a way to do this with Formik
+    await new Promise((res) => setTimeout(res, 1000));
+
+    console.log('*After Fake Form Submission*');
   },
   validationSchema: yup.object().shape({
     name,

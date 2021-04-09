@@ -1,4 +1,6 @@
-import { ButtonHTMLAttributes } from 'react';
 import { BoxProps } from '../Box';
 
-export type ButtonProps = ButtonHTMLAttributes<BoxProps>;
+export interface ButtonProps extends BoxProps {
+  type: 'submit';
+  disabled: boolean;
+}
