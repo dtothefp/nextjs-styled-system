@@ -1,3 +1,3 @@
-const defaultConfig = require('@affirm/jest-config');
+const defaultConfig = require('@dfp/jest-config');
 
 module.exports = defaultConfig;

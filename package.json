@@ -1,11 +1,11 @@
 {
-  "name": "affirm-takehome",
+  "name": "dfp-land",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
-  "prettier": "@affirm/eslint-config/.prettierrc.js",
+  "prettier": "@dfp/eslint-config/.prettierrc.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,14 +18,18 @@
     "@types/react": "^17.0.3",
     "@types/styled-components": "^5.1.9",
     "@types/styled-system": "^5.1.11",
+    "card-validator": "^8.1.0",
+    "formik": "^2.2.6",
     "next": "10.1.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.2.3",
     "styled-normalize": "^8.0.7",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
     "typescript": "^4.2.3"
   }
 }
