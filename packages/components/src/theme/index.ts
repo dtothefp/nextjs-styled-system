@@ -2,20 +2,13 @@ export default {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#07c',
-    secondary: '#30c',
-    muted: '#f6f6f9',
-    gray: '#dddddf',
+    primary: '#0f9ced',
+    alert: '#d44242',
+    secondary: '#909293',
     highlight: 'hsla(205, 100%, 40%, 0.125)',
   },
-  elevation: {
-    none: 'none',
-    low: '0px 2px 4px rgba(34, 34, 34, 0.08), 0px 0px 2px rgba(34, 34, 34, 0.15)',
-    medium: '0px 4px 16px rgba(34, 34, 34, 0.1), 0px 1px 2px rgba(34, 34, 34, 0.08)',
-    high: '0px 6px 16px rgba(34, 34, 34, 0.18), 0px 2px 2px rgba(34, 34, 34, 0.1)',
-  },
   fonts: {
-    body: 'system-ui, sans-serif',
+    body: 'Calibre, sans-serif',
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
@@ -39,6 +32,10 @@ export default {
   },
   shadows: {
     card: '0 0 4px rgba(0, 0, 0, .125)',
+    none: 'none',
+    low: '0px 2px 4px rgba(34, 34, 34, 0.08), 0px 0px 2px rgba(34, 34, 34, 0.15)',
+    medium: '0px 4px 16px rgba(34, 34, 34, 0.1), 0px 1px 2px rgba(34, 34, 34, 0.08)',
+    high: '0px 6px 16px rgba(34, 34, 34, 0.18), 0px 2px 2px rgba(34, 34, 34, 0.1)',
   },
   text: {
     heading: {

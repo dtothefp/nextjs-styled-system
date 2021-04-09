@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, useContext, useCallback } from 'react';
+import React, { FC, forwardRef, useContext, useCallback, useState } from 'react';
 import * as valid from 'card-validator';
 import { InputProps } from './types';
 import { FormContext } from '../Form';
@@ -8,8 +8,11 @@ import { Label } from '../Label';
 export const Input: FC<InputProps> = forwardRef((props, ref) => {
   const formik = useContext(FormContext);
   const { name } = props;
-  const showError = (): string | void => (formik.touched[name] && formik.errors[name] ? 'block' : 'none');
+  const touched = formik.touched[name];
+  const error = formik.errors[name];
+  const showError = touched && Boolean(error);
   const value = formik.values[name];
+  const [focused, setFocus] = useState(false);
   const handleChange = useCallback(
     async (e) => {
       const v = e.target.value;
@@ -36,17 +39,39 @@ export const Input: FC<InputProps> = forwardRef((props, ref) => {
     [formik, name, value]
   );
 
+  const handleBlur = useCallback(
+    (e) => {
+      setFocus(false);
+      formik.handleBlur(e);
+    },
+    [formik]
+  );
+
+  const handleFocus = useCallback(() => {
+    setFocus(true);
+  }, []);
+
   return (
-    <Box>
-      <Label>{props.placeholder}</Label>
+    <Box position="relative">
+      <Label
+        position="absolute"
+        top="9px"
+        left="12px"
+        color="secondary"
+        zIndex={0}
+        display={focused ? 'none' : 'block'}>
+        {props.placeholder}
+      </Label>
       <Box
+        zIndex={100}
         ref={ref}
         as="input"
         type="text"
         mb={4}
         value={value}
         onChange={handleChange}
-        onBlur={formik.handleBlur}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         {...props}
         __css={{
           display: 'block',
@@ -55,17 +80,23 @@ export const Input: FC<InputProps> = forwardRef((props, ref) => {
           appearance: 'none',
           fontSize: 'inherit',
           lineHeight: 'inherit',
-          border: '1px solid',
           borderRadius: 'default',
+          border: '1px solid',
+          borderColor: showError ? 'alert' : 'secondary',
           color: 'inherit',
           bg: 'transparent',
           boxSizing: 'border-box',
+          ':focus': {
+            outline: 'none',
+          },
           '::placeholder': {
             color: 'transparent',
           },
         }}
       />
-      <Box display={showError()}>{formik.errors[name]}</Box>
+      <Box bottom="-20px" left="10px" position="absolute" color="alert" display={showError ? 'block' : 'none'}>
+        {formik.errors[name]}
+      </Box>
     </Box>
   );
 });

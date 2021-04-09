@@ -4,6 +4,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from '@dfp/components';
 
 const GlobalStyle = createGlobalStyle`
+  * { box-sizing: border-box; }
   body {
     margin: 0;
     padding: 0;

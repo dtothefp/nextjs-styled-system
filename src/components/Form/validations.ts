@@ -1,13 +1,14 @@
 import * as valid from 'card-validator';
 import * as yup from 'yup';
+import { REQUIRED } from './constants';
 
 export const cardNumber = yup
   .string()
   .typeError('Field is invalid')
-  .required('This field is required')
+  .required(REQUIRED)
   .test((value, schema) => {
     const { card, isPotentiallyValid, isValid } = valid.number(value);
-    let message = 'Please enter a valid Visa or AMEX';
+    let message = 'Enter valid Visa or AMEX';
 
     if (!isPotentiallyValid || card === null) return schema.createError({ message });
 
@@ -17,10 +18,10 @@ export const cardNumber = yup
     // eslint-disable-next-line default-case
     switch (cardType) {
       case 'visa':
-        message = 'Visa number is not valid';
+        message = 'Visa number not valid';
         break;
       case 'american-express':
-        message = 'AMEX number is not valid';
+        message = 'AMEX number not valid';
         break;
     }
 
@@ -30,48 +31,44 @@ export const cardNumber = yup
 export const cvv = yup
   .number()
   .positive()
+  .integer()
   .typeError('Field must be a number')
-  .required('This field is required')
+  .required(REQUIRED)
   .when(['cardNumber'], (value, schema) => {
     const { card } = valid.number(value);
     const cardType = card?.type;
 
     if (cardType === 'american-express') {
-      return schema.test('cvv-test-amex', 'AMEX cvv must be of length 4', (v) => v?.toString().length === 4);
+      return schema.test('cvv-test-amex', 'AMEX cvv must be length 4', (v) => v?.toString().length === 4);
     }
 
-    return schema.test('cvv-test-visa', 'AMEX cvv must be of length 3', (v) => v?.toString().length === 3);
+    return schema.test('cvv-test-visa', 'Visa cvv must be length 3', (v) => v?.toString().length === 3);
   });
 
 export const name = yup
   .string()
-  .required('This field is required')
+  .required(REQUIRED)
   .test((value, schema) => /^[a-zA-Z ]+$/.test(value) || schema.createError({ message: 'Name is invalid' }));
 
 export const expMonth = yup
-  .number()
-  .positive()
-  .typeError('Field must be a number')
-  .min(2)
-  .max(2)
-  .required('This field is required')
+  .string()
+  .length(2, 'Length must be 2')
+  .required(REQUIRED)
   .test((value, schema) => {
     const { isValid } = valid.expirationMonth(value);
-    const error = schema.createError({ message: 'Expiration month is invalid' });
 
-    return isValid || error;
+    return isValid || schema.createError({ message: 'Exp. month invalid' });
   });
 
 export const expYear = yup
-  .number()
-  .positive()
-  .typeError('Field must be a number')
-  .min(4)
-  .max(4)
-  .required('This field is required')
-  .test((value, schema) => {
+  .string()
+  .length(4, 'Length must be 4')
+  .required(REQUIRED)
+  .test('exp-year', 'Length must be 4', (value, schema) => {
     const { isValid } = valid.expirationYear(value);
-    const error = schema.createError({ message: 'Expiration year is invalid' });
+    const error = schema.createError({ message: 'Exp. year invalid' });
+
+    if (value?.toString().length < 4) return false;
 
     return isValid || error;
   });

@@ -1,14 +1,15 @@
 import React, { FC, forwardRef } from 'react';
-import { BoxProps } from '../Box';
-import { Flex } from '../Flex';
+import { Box, BoxProps } from '../Box';
 
 export const Label: FC<BoxProps> = forwardRef((props, ref) => (
-  <Flex
+  <Box
     ref={ref}
     as="label"
     {...props}
     __css={{
-      width: '100%',
+      transition: '0.2s',
+      cursor: 'default',
+      'user-select': 'none',
     }}
   />
 ));

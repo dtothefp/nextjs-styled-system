@@ -8,13 +8,16 @@ export const FormContext = createContext<ReturnType<typeof useFormik>>(null);
 
 export const Form: FC<FormProps> = ({ children, validations, ...props }) => {
   const formik = useFormik(validations);
+  const isValid = formik.isValid && formik.dirty;
+  const hasSubmitted = formik.submitCount > 0;
+  const buttonMessage = hasSubmitted ? 'Success' : 'Submit';
 
   return (
     <FormContext.Provider value={formik}>
       <Box as="form" onSubmit={formik.handleSubmit} {...props}>
         {children}
-        <Button type="submit" disabled={!(formik.isValid && formik.dirty)}>
-          Submit
+        <Button type="submit" width={1} disabled={!isValid}>
+          {buttonMessage}
         </Button>
       </Box>
     </FormContext.Provider>

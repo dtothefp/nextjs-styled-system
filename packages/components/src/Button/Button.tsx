@@ -9,6 +9,7 @@ export const Button: FC<ButtonProps> = forwardRef((props, ref) => (
     {...props}
     __css={{
       appearance: 'none',
+      cursor: 'pointer',
       display: 'inline-block',
       textAlign: 'center',
       lineHeight: 'inherit',
@@ -20,6 +21,9 @@ export const Button: FC<ButtonProps> = forwardRef((props, ref) => (
       bg: 'primary',
       border: 0,
       borderRadius: 4,
+      ':disabled': {
+        backgroundColor: 'secondary',
+      },
     }}
   />
 ));
