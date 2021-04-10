@@ -4,7 +4,7 @@
   "description": "Shared Jest configuration",
   "license": "MIT",
   "dependencies": {
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/jest-dom": "^5.11.10",
     "@types/jest": "^26.0.22",
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.3",

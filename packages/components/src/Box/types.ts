@@ -20,10 +20,11 @@ export interface BoxProps
     BordersProps,
     BackgroundProps {
   color?: string;
+  // TODO: determine how to properly type `ref`
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref?: any;
   as?: string;
-  __css?: Record<string, string | number | Record<string, string>>;
+  __css?: Record<string, string | number | Record<string, string | number>>;
   variant?: string;
   children?: ReactNode | ReactNode[];
 }

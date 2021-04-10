@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
 import React, { FC } from 'react';
-import * as yup from 'yup';
-import { Box, Flex, Input, Form, FormProps } from '@dfp/components';
+import { Box, Flex, Input, Form, FormProps, validationSchema } from '@dfp/components';
 import { NAME, CARD, CVV, EXP_MONTH, EXP_YEAR } from './constants';
-import { cardNumber, cvv, name, expYear, expMonth } from './validations';
 import { Amex, Discover, Mastercard, Visa } from '../../assets';
 
 const validations: FormProps['validations'] = {
@@ -22,13 +20,7 @@ const validations: FormProps['validations'] = {
 
     console.log('*After Fake Form Submission*');
   },
-  validationSchema: yup.object().shape({
-    name,
-    cardNumber,
-    cvv,
-    expMonth,
-    expYear,
-  }),
+  validationSchema,
 };
 
 export const DFPform: FC = () => (

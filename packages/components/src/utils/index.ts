@@ -1,0 +1,1 @@
+export { removeSpace } from './removeSpace';

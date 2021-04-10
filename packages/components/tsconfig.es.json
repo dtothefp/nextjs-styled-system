@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "outDir": "./es",
+    "rootDir": "./src"
+  },
+  "references": [],
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "__snapshots__",
+    "**/*test.*",
+    "**/*.stories.*"
+  ]
+}

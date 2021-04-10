@@ -1,5 +1,5 @@
 {
-  "name": "dfp-land",
+  "name": "@dfp/app",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
@@ -7,33 +7,39 @@
   ],
   "prettier": "@dfp/eslint-config/.prettierrc.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "build": "npm-run-all --serial clean --parallel build:svg build:packages --serial build:next build:export",
+    "build:next": "next build",
+    "build:export": "next export",
+    "build:packages": "tsc --build ./packages/tsconfig.packages.json",
     "build:svg": "svgr --ignore-existing --filename-case pascal --typescript -d src/assets src/assets/svg",
+    "clean": "run-p clean:build clean:packages",
+    "clean:build": "rm -rf {.next,out}",
+    "clean:packages": "rm -rf packages/*/{es,cjs,dist,*tsbuildinfo}",
+    "dev": "next dev",
     "start": "next start",
     "lint": "eslint --ext .tsx --ext .js --ext .ts .",
+    "serve": "serve out -l 3000",
     "test": "jest",
     "typecheck": "tsc --project tsconfig.base.json"
   },
   "dependencies": {
-    "@types/react": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
-    "@types/styled-system": "^5.1.11",
-    "card-validator": "^8.1.0",
-    "formik": "^2.2.6",
     "next": "10.1.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.2.3",
-    "styled-normalize": "^8.0.7",
-    "styled-system": "^5.1.5",
-    "yup": "^0.32.9"
+    "styled-normalize": "^8.0.7"
   },
   "devDependencies": {
     "@svgr/cli": "^5.5.0",
-    "@svgr/webpack": "^5.5.0",
-    "babel-plugin-inline-react-svg": "^2.0.1",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.2",
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "@types/styled-system": "^5.1.11",
+    "add": "^2.0.6",
     "babel-plugin-styled-components": "^1.12.0",
+    "npm-run-all": "^4.1.5",
+    "serve": "^11.3.2",
     "typescript": "^4.2.3"
   }
 }
