@@ -15,6 +15,7 @@
     "clean": "run-p clean:build clean:packages",
     "clean:build": "rm -rf {.next,out}",
     "clean:packages": "rm -rf packages/*/{es,cjs,dist,*tsbuildinfo}",
+    "deploy": "timestamp=$(date +\"%Y-%m-%d %H:%M:%S\"); touch out/.nojekyll; gh-pages-clean; NODE_DEBUG=gh-pages gh-pages -d out -m \"Update $timestamp\" --dotfiles",
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint --ext .tsx --ext .js --ext .ts .",
@@ -38,6 +39,7 @@
     "@types/styled-system": "^5.1.11",
     "add": "^2.0.6",
     "babel-plugin-styled-components": "^1.12.0",
+    "gh-pages": "^3.1.0",
     "npm-run-all": "^4.1.5",
     "serve": "^11.3.2",
     "typescript": "^4.2.3"
