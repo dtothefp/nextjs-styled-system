@@ -152,10 +152,14 @@ jobs:
       - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn
+      - name: Make Artifact Directory
+        run: mkdir out
       - uses: actions/download-artifact@v2
         with:
           name: nextjs-build
-      - name: List
-        run: ls -la
+          path: ./out
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./out
       - name: Deploy
         run: yarn deploy
