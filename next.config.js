@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 module.exports = {
+  assetPrefix: process.env.ASSET_PREFIX ?? '',
   future: {
     webpack5: true,
   },
