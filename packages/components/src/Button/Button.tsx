@@ -24,6 +24,11 @@ export const Button: FC<ButtonProps> = forwardRef((props, ref) => (
       borderRadius: 4,
       ':disabled': {
         backgroundColor: 'secondary',
+        cursor: 'not-allowed',
+        'pointer-events': 'all !important',
+      },
+      ':focus': {
+        outline: 0,
       },
     }}
   />

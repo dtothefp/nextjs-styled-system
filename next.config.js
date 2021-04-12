@@ -1,11 +1,18 @@
+/* eslint-disable no-param-reassign */
 module.exports = {
   future: {
     webpack5: true,
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     if (isServer) {
-      // eslint-disable-next-line no-param-reassign
       config.resolve.mainFields = ['module', 'main'];
+    }
+
+    if (dev) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@dfp/components': '@dfp/components/src',
+      };
     }
 
     return config;

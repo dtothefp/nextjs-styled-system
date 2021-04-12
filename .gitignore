@@ -12,6 +12,9 @@ coverage
 
 # production
 /build
+es
+cjs
+*.tsbuildinfo
 
 # misc
 .DS_Store

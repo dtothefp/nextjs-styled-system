@@ -13,6 +13,7 @@ export const StyledBox = styled.div<BoxProps>(
 );
 
 export const Box: FC<BoxProps> = forwardRef(({ children, ...rest }, ref) => (
+  // TODO: determine how to properly type `ref`
   // @ts-expect-error having trouble with ref forwarding, not sure why
   <StyledBox ref={ref} {...rest}>
     {children}
