@@ -1,14 +1,7 @@
-name: Pull Request
-
+name: Build and Deploy
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: Semver version (patch|minor|major)
-        required: true
-        default: patch
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
     branches: '*'
 env:
