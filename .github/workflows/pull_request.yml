@@ -124,6 +124,11 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+      - uses: actions/upload-artifact@v2
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          name: nextjs-build
+          path: ./out/
   deploy:
     name: Deploy to GH Pages
     needs: [lint, test, typecheck, build]
@@ -147,5 +152,10 @@ jobs:
       - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn
+      - uses: actions/download-artifact@v2
+        with:
+          name: nextjs-build
+      - name: List
+        run: ls -la
       - name: Deploy
         run: yarn deploy
