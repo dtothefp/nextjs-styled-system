@@ -6,7 +6,7 @@ on:
     branches: '*'
 env:
   NODE_VERSION: 14
-  ASSET_PREFIX: ${{ github.ref == 'refs/heads/master' && '/nextjs-styled-system' || '' }}
+  ASSET_PREFIX: ${{ github.ref == 'refs/heads/main' && '/nextjs-styled-system' || '' }}
 jobs:
   install:
     name: Install Node Dependencies
@@ -127,7 +127,7 @@ jobs:
   deploy:
     name: Deploy to GH Pages
     needs: [lint, test, typecheck, build]
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
