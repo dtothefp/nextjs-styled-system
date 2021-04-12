@@ -7,7 +7,8 @@
   ],
   "prettier": "@dfp/eslint-config/.prettierrc.js",
   "scripts": {
-    "build": "npm-run-all --serial clean --parallel build:svg build:packages --serial build:next build:export",
+    "build": "npm-run-all --serial clean --parallel build:svg build:packages --serial build:next build:export build:no-jekyll",
+    "build:no-jekyll": "touch out/.nojekyll",
     "build:next": "next build",
     "build:export": "next export",
     "build:packages": "tsc --build ./packages/tsconfig.packages.json",
@@ -15,7 +16,7 @@
     "clean": "run-p clean:build clean:packages",
     "clean:build": "rm -rf {.next,out}",
     "clean:packages": "rm -rf packages/*/{es,cjs,dist,*tsbuildinfo}",
-    "deploy": "timestamp=$(date +\"%Y-%m-%d %H:%M:%S\"); touch out/.nojekyll; gh-pages-clean; NODE_DEBUG=gh-pages gh-pages -d out -m \"Update $timestamp\" --dotfiles",
+    "deploy": "timestamp=$(date +\"%Y-%m-%d %H:%M:%S\"); gh-pages-clean; NODE_DEBUG=gh-pages gh-pages -d out -m \"Update $timestamp\" --dotfiles",
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint --ext .tsx --ext .js --ext .ts .",
